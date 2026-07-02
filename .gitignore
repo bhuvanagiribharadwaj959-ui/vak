@@ -1,0 +1,9 @@
+node_modules/
+.next/
+myenv/
+__pycache__/
+.env
+.env.local
+*.log
+VAK-API/
+model/
