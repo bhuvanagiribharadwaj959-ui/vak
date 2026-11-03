@@ -1,9 +1,33 @@
-node_modules/
+# Next.js
 .next/
+out/
+build/
+dist/
+
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env*.local
+.env
+
+# Python / ML
 myenv/
 __pycache__/
-.env
-.env.local
-*.log
-VAK-API/
-model/
+*.pyc
+*.pt
+*.safetensors
+*.bin
+*.ckpt
+ml/checkpoints/*.pt
+ml/checkpoints/*.safetensors
+ml/checkpoints/*.bin
+
+# IDE / OS
+.DS_Store
+*.pem
+.vscode/
+.idea/

@@ -1,0 +1,401 @@
+/* =============================================================================
+   Vak AI Neural Suite — Model 1: English-to-Telugu Seq2Seq Transformer
+   "Attention Is All You Need" from Scratch
+   ============================================================================= */
+
+.translator-section {
+  position: relative;
+}
+
+.translator-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+/* Architecture Showcase Card */
+.arch-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 96px;
+}
+
+.arch-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.arch-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.arch-image-container {
+  background: #0D101A;
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  min-height: 480px;
+}
+
+.arch-diagram-img {
+  max-width: 100%;
+  height: auto;
+  max-height: 520px;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+  transition: transform var(--transition-smooth);
+}
+
+.arch-diagram-img:hover {
+  transform: scale(1.02);
+}
+
+.arch-caption {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: var(--space-3);
+  font-family: var(--font-mono);
+}
+
+.arch-highlights-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: var(--space-4);
+}
+
+.arch-tag-pill {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-snappy);
+}
+
+.arch-tag-pill:hover, .arch-tag-pill.active {
+  background: rgba(139, 92, 246, 0.2);
+  border-color: var(--accent-violet);
+  color: #FFFFFF;
+}
+
+/* "How I Built It" Step-by-Step Breakdown */
+.how-it-works-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.step-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  position: relative;
+  transition: all var(--transition-smooth);
+}
+
+.step-card:hover {
+  border-color: var(--border-bright);
+  background: var(--bg-card-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.step-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.step-number {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(6, 182, 212, 0.25));
+  border: 1px solid var(--border-bright);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent-cyan-light);
+  flex-shrink: 0;
+}
+
+.step-title-group h4 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.step-title-group span {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--accent-violet-light);
+}
+
+.step-body p {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-3);
+}
+
+.math-callout {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--border-medium);
+  border-left: 3px solid var(--accent-violet);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-4);
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  color: var(--accent-cyan-light);
+  margin: var(--space-3) 0;
+  overflow-x: auto;
+}
+
+.tech-spec-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: var(--space-3);
+}
+
+.spec-chip {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+}
+
+/* =============================================================================
+   Interactive Live Translation Studio Widget
+   ============================================================================= */
+.translator-sandbox {
+  grid-column: 1 / -1;
+  margin-top: var(--space-8);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-lg);
+}
+
+.sandbox-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-6);
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.sandbox-title {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.sandbox-title .live-badge {
+  font-size: 0.7rem;
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--accent-emerald);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+.preset-pills-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.preset-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-right: 0.2rem;
+}
+
+.btn-preset {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-snappy);
+}
+
+.btn-preset:hover {
+  background: rgba(139, 92, 246, 0.18);
+  border-color: var(--accent-violet-light);
+  color: #FFFFFF;
+}
+
+/* Translation Dual Panes */
+.translation-panes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+}
+
+.pane-card {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+}
+
+.pane-label {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: var(--space-3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pane-textarea {
+  width: 100%;
+  min-height: 120px;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  resize: vertical;
+  outline: none;
+}
+
+.target-output-display {
+  min-height: 120px;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.6;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.target-output-display .telugu-script {
+  color: var(--accent-cyan-light);
+  font-size: 1.45rem;
+  text-shadow: 0 0 25px rgba(6, 182, 212, 0.4);
+}
+
+.target-output-display .phonetic-hint {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+  margin-top: 0.4rem;
+  font-style: italic;
+}
+
+/* Attention Heatmap Matrix Visualizer */
+.attention-matrix-drawer {
+  margin-top: var(--space-6);
+  background: rgba(7, 8, 11, 0.6);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+
+.matrix-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-3);
+}
+
+.matrix-title {
+  font-size: 0.82rem;
+  font-family: var(--font-mono);
+  color: var(--accent-violet-light);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.matrix-grid-visual {
+  display: grid;
+  gap: 3px;
+  overflow-x: auto;
+  padding: var(--space-2) 0;
+}
+
+.matrix-cell {
+  width: 32px;
+  height: 28px;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.62rem;
+  font-family: var(--font-mono);
+  color: rgba(255, 255, 255, 0.8);
+  transition: transform var(--transition-snappy);
+}
+
+.matrix-cell:hover {
+  transform: scale(1.18);
+  z-index: 10;
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.8);
+}
+
+@media (max-width: 1024px) {
+  .translator-grid {
+    grid-template-columns: 1fr;
+  }
+  .arch-card {
+    position: static;
+  }
+  .translation-panes {
+    grid-template-columns: 1fr;
+  }
+}

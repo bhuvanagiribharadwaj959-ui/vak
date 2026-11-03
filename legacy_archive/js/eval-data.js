@@ -1,0 +1,123 @@
+// Direct extract from eval_results.json and benchmark telemetry
+export const EVAL_DATA = {
+  perplexity: {
+    custom: {
+      name: "Custom GPT-124M (Vak)",
+      openWebText: { loss: 3.079, ppl: 21.74 },
+      wikiText2: { loss: 4.2435, ppl: 69.65 },
+      wikiText103: { loss: 4.2435, ppl: 69.65 }
+    },
+    openai: {
+      name: "OpenAI GPT-2 (124M Base)",
+      openWebText: { loss: 3.0236, ppl: 20.57 },
+      wikiText2: { loss: 3.6349, ppl: 37.90 },
+      wikiText103: { loss: 3.6349, ppl: 37.90 }
+    }
+  },
+  benchmarks: {
+    custom: {
+      hellaSwagRaw: 35.0,
+      hellaSwagNorm: 29.5,
+      lambadaAcc: 6.0,
+      lambadaTargetPPL: 19.88
+    },
+    openai: {
+      hellaSwagRaw: 35.5,
+      hellaSwagNorm: 33.0,
+      lambadaAcc: 9.5,
+      lambadaTargetPPL: 14.45
+    }
+  },
+  qualitative: [
+    {
+      id: "prompt-1",
+      category: "Philosophical Reasoning",
+      prompt: "The meaning of life is",
+      generations: {
+        custom: {
+          greedy: "The meaning of life is not a matter of whether you are a good person or not. It is a matter of whether you are a good person or not.\n\nThe meaning of life is not a matter of whether you are a good person or not. It is a matter of whether you are a good person or not.\n\nThe meaning of life is not a matter of whether you are a good person or not",
+          sampling_t08_topk50: "The meaning of life is “the same,” according to the government, which maintains that a person would not be considered an “unfit” to life. The government argues that there are no grounds to consider such a person as a “unfit” to have had a “substantial chance of survival” under the law. It also says that such a person would not be called"
+        },
+        openai: {
+          greedy: "The meaning of life is not the same as the meaning of death.\n\nThe meaning of life is not the same as the meaning of death.\n\nThe meaning of life is not the same as the meaning of death.\n\nThe meaning of life is not the same as the meaning of death.\n\nThe meaning of life is not the same as the meaning of death.\n\nThe meaning of life is",
+          sampling_t08_topk50: "The meaning of life is not just defined by the laws of physics, but by what is possible and what is not possible. For example, life is the ability to survive because there is life in the universe. Without life there is no ability to create, sustain, or survive. This can only be realized through a single event or event in the universe. Life is the ability to survive because there is life in the universe."
+        }
+      }
+    },
+    {
+      id: "prompt-2",
+      category: "Creative & Narrative",
+      prompt: "In a distant galaxy, the last star",
+      generations: {
+        custom: {
+          greedy: "In a distant galaxy, the last star in the galaxy is the Milky Way, and the galaxy is the only one that can be seen.\n\nThe Milky Way is the only galaxy in the galaxy that can be seen.\n\nThe Milky Way is the only galaxy in the galaxy that can be seen.\n\nThe galaxy is the only one that can be seen.\n\nThe galaxy is the only one that can be seen.",
+          sampling_t08_topk50: "In a distant galaxy, the last star in our galaxy was the red planet, the red planet, the red planet, and the black hole. The universe's red lines appear much more than just an arc in time. The galaxy has been at its peak since about 10 billion years ago, and it can only be seen from a distance (0.3 to 1.5 million years or about 4 million miles) at a distance (1"
+        },
+        openai: {
+          greedy: "In a distant galaxy, the last star to be seen was a star that was about to be destroyed by a supernova.\n\nThe discovery of the first star to be discovered in the Milky Way is the first to be made in the Milky Way.\n\nThe discovery of the first star to be discovered in the Milky Way is the first to be made in the Milky Way.\n\nThe discovery of the first star to be discovered",
+          sampling_t08_topk50: "In a distant galaxy, the last star to be discovered was 3.5 billion years ago. And the closest star to be discovered was a very distant star in the same galaxy that had been orbiting around its star for so long.\n\nAs such, this means the most distant star to be discovered is only about one-half that far from our Sun.\n\nImage: Hubble Space Telescope. Credit: ESA/Hubble/Z"
+        }
+      }
+    },
+    {
+      id: "prompt-3",
+      category: "Technological Foresight",
+      prompt: "Artificial intelligence will",
+      generations: {
+        custom: {
+          greedy: "Artificial intelligence will be able to make a difference in the lives of people who are not in the same position as us.\n\nThe idea of artificial intelligence is a new one. It is a new concept that is being developed by the AI community.\n\nThe idea of artificial intelligence is a new one. It is a new concept that is being developed by the AI community.\n\nThe idea of artificial intelligence",
+          sampling_t08_topk50: "Artificial intelligence will be able to work with the same tools that have been invented to make the human brain.\n\nSo, if we want to be able to create an artificial intelligence, we need to be able to do it. You can’t be afraid of being able to create machines that have that knowledge. And you’d be a fool to try. But if you try, you’"
+        },
+        openai: {
+          greedy: "Artificial intelligence will be able to do things like search for and find people, and to do things like find out who's in the right place at the right time.\n\n\"We're going to be able to do things like that, and we're going to be able to do things like that, and we're going to be able to do things like that, and we're going to be able to do",
+          sampling_t08_topk50: "Artificial intelligence will be used more to create new algorithms than more traditional tools, experts say.\n\nIt's also being used for \"programmatic analysis,\" which makes it easier to keep track of what is happening in the real world. It's a tool that can predict human behavior and create smart new technologies that can better predict what people need to do to survive or help themselves.\n\nAnd it is a tool"
+        }
+      }
+    },
+    {
+      id: "prompt-4",
+      category: "Code Generation",
+      prompt: "def fibonacci(n):",
+      generations: {
+        custom: {
+          greedy: "def fibonacci(n): fibonacci(n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,",
+          sampling_t08_topk50: "def fibonacci(n): 1) f a b c c e b c d e c d e c d e c d e c d e c d e c d e c d e c d e c d e c d c d e c d e c d e c d e c d e c d e c d e c d e c d e c d e c d e c d e"
+        },
+        openai: {
+          greedy: "def fibonacci(n):\n\nreturn n\n\ndef fibonacci(n):\n\nreturn n\n\ndef fibonacci(n):\n\nreturn n\n\ndef fibonacci(n):\n\nreturn n\n\ndef fibonacci(n):\n\nreturn n\n\ndef fibonacci(n):\n\nreturn n\n\ndef fibonacci(n):\n\n",
+          sampling_t08_topk50: "def fibonacci(n): 1) f(f(n))\n\nThe method is simple: once again, we can make an error when trying to find the root of an integer, and the error is caught and the compiler will figure out a way to try to find the root of the integer. In this instance (if you have the proper compiler) you can compile a vectorized program with an explicit argument in either"
+        }
+      }
+    },
+    {
+      id: "prompt-5",
+      category: "Fact Retrieval & QA",
+      prompt: "Question: What is the capital of France? Answer:",
+      generations: {
+        custom: {
+          greedy: "Question: What is the capital of France? Answer: The capital of France is the capital of France.\n\nThe capital of France is the capital of France.\n\nThe capital of France is the capital of France.\n\nThe capital of France is the capital of France.\n\nThe capital of France is the capital of France.\n\nThe capital of France is the capital of France.\n\nThe capital of France is the capital of",
+          sampling_t08_topk50: "Question: What is the capital of France? Answer: The capital of France is the capital of France. Is it the capital of France? Answer: Yes. Answer: The capital of France is the capital of France.\n\nA. A. The capital of France is the capital of France. Is it the capital of France? In the capital of France, the capital of France is the capital of France. Is it the capital of France? Answer"
+        },
+        openai: {
+          greedy: "Question: What is the capital of France? Answer: The capital of France is the capital of France.\n\nQuestion: What is the capital of France? Answer: The capital of France is the capital of France.\n\nQuestion: What is the capital of France? Answer: The capital of France is the capital of France.\n\nQuestion: What is the capital of France? Answer: The capital of France is the capital of France.\n",
+          sampling_t08_topk50: "Question: What is the capital of France? Answer: The capital of France is the capital of France, because, in the year 1819, we have laid an equal ground upon the whole of the other nations and of the several kingdoms. In 1819 there was a part of the French Empire which had no capital, and had only one. The others were divided by the treaty of 1821, or by a treaty of 1817. The part called"
+        }
+      }
+    },
+    {
+      id: "prompt-6",
+      category: "Scientific Knowledge",
+      prompt: "The solar system consists of eight planets, which are",
+      generations: {
+        custom: {
+          greedy: "The solar system consists of eight planets, which are the same size as the Sun. The planets are the same size as the Sun, and the planets are the same size as the Sun.\n\nThe planets are the same size as the Sun, and the planets are the same size as the Sun.\n\nThe planets are the same size as the Sun, and the planets are the same size as the Sun.\n\nThe planets are the",
+          sampling_t08_topk50: "The solar system consists of eight planets, which are made of four stars, each with its own gravity. A planet becomes one of six stars, while a planet becomes four. The Earth makes up about 75 percent of the Earth's mass, and the other half is part of the moon. It occupies a small area of space, but the moon is divided into four parts: the center is the moon, and the center is the planet. If the"
+        },
+        openai: {
+          greedy: "The solar system consists of eight planets, which are all orbiting each other. The sun is the center of the solar system, and the planets are all orbiting each other. The sun is the center of the solar system, and the planets are all orbiting each other.\n\nThe sun is the center of the solar system, and the planets are all orbiting each other. The sun is the center of the solar system, and the planets are all orbiting",
+          sampling_t08_topk50: "The solar system consists of eight planets, which are made up of a number of different rocky planets, each made up of one or more rocky planets. For example, Saturn is the most massive planet of the solar system and the furthest from the sun.\n\nThis means that a single planet could form a moon or a planet from a single star. For a planet to form from a single star, it would have to orbit a single star called"
+        }
+      }
+    }
+  ]
+};
